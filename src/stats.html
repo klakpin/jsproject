@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+<body class="site">
+<header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <!-- Add spacer, to align navigation to the right -->
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Общая статистика</a>
+            <a class="mdl-navigation__link" href="index.html">Мои игры</a>
+            <a class="mdl-navigation__link" href="settings.html">Настройки</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <span class="mdl-layout-title">Dota 2 assistant</span>
+    </div>
+</header>
+
+<div class="content">
+    <div class="gameInfo">
+        <div class="mdl-card mdl-shadow--2dp mmrTableCard">
+            <canvas id="myChart" height="350px" width="700px"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    var dates = ["01.01.2016", "10.01.2016", "20.01.2016", "02.02.2016", "01.03.2016",
+        "10.04.2016", "15.04.2016", "10.05.2016", "15.06.2016"];
+    var mmr = [3456, 3545, 3784, 3417, 3987, 3489, 3145, 3789, 3489];
+
+
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [
+                {
+                    data: mmr,
+                    label: "Рейтинг",
+                    borderColor: "#3365cd",
+                    fill: false
+                }
+            ]
+        }
+    });
+
+</script>
+
+<footer class="mdl-mini-footer footer">
+    <div class="mdl-mini-footer__left-section">
+        <div class="mdl-logo">
+            Рога и копыта ©
+        </div>
+        <ul class="mdl-mini-footer__link-list">
+            <li><a href="#">Помощь</a></li>
+            <li><a href="#">Пользовательское соглашение</a></li>
+            <li><a href="#">политика конфиденциальности</a></li>
+        </ul>
+    </div>
+
+    <div class="mdl-mini-footer__right-section">
+        <img class="socialIcon" src="img/vkLogo.png" alt="">
+        <img class="socialIcon" src="img/twitterLogo.png" alt="">
+        <img class="socialIcon" src="img/facebookLogo.png" alt="">
+    </div>
+
+</footer>
+</body>
+</html>
