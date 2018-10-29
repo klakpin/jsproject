@@ -1,0 +1,189 @@
+.heroIcon {
+    height: 28px;
+    /*width: 24px;*/
+    margin-right: 0.5em;
+}
+
+.heroesRow {
+    margin-top: 0.2em;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+.gamesList {
+    padding: 1em;
+    display: flex;
+    flex-flow: row;
+    flex: 1;
+}
+
+.content {
+    padding: 1em;
+    display: flex;
+    flex-flow: row;
+    flex: 1;
+}
+
+.gameCard {
+    height: 10em;
+    margin: 5px;
+}
+
+.mdl-card__actions {
+    margin-top: 1em;
+}
+
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}
+
+.socialIcon {
+    height: 30px;
+    width: auto;
+}
+
+.middleRow {
+    display: flex;
+    flex-flow: row;
+}
+
+.winner-red {
+    color: #b32a1e;
+}
+
+.gameInfo {
+    width: 100%;
+    max-width: 790px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.gamesTable {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+.gameScore {
+    margin-top: -0.8em;
+}
+
+.gameScore-radiant {
+    color: #92a525;
+    font-weight: bold;
+
+}
+
+.gameScore-dire {
+    color: #b32a1e;
+    font-weight: bold;
+
+}
+
+.heroImage {
+    height: 30px;
+    margin-right: 5px;
+}
+
+.result-win {
+    font-weight: bold;
+    color: green;
+}
+
+.result-lose {
+    color: darkred;
+}
+
+.mainStats {
+    display: flex;
+    flex-flow: row;
+}
+
+.statsNumber {
+    height: 40%;
+    margin-top: 40%;
+    font-size: 5em;
+    color: #636363;
+}
+
+.statsName {
+    color: #636363;
+    font-size: 2em;
+}
+
+.stats-card {
+    margin-right: 10px;
+}
+
+.stats-card-last {
+    margin-right: 0;
+}
+
+.statsNumberTarget {
+    margin-top: 20%;
+    height: 30%;
+}
+
+.heroInfoCard {
+    margin-top: 5px;
+    padding-right: 10px;
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 10px;
+    display: flex;
+    flex-flow: row;
+}
+
+.heroInfoCard-heroIcon {
+    height: 100%;
+}
+
+.timings {
+    display: flex;
+    flex-flow: row;
+    margin-top: 5px;
+}
+
+.itemTiming {
+    margin-left: 5px;
+}
+
+.timingsTitle {
+    margin-top: 20px;
+    width: 20%;
+}
+
+.mmrTableCard {
+    width: auto;
+    height: 400px;
+    padding: 1em;
+}
+
+.stats {
+    width: 100%;
+    max-width: 790px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.settings {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.settings-card {
+    width: 100%;
+}
