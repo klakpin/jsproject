@@ -28,14 +28,16 @@ export class CommonStatsCard extends React.Component {
     }
 
     componentDidMount() {
+        if (!this.props.resultNumber) {
+            return
+        }
         const options = {
             useEasing: true,
             useGrouping: true,
             separator: ',',
             decimal: '.',
         };
-
-        let counter = new CounutUp(this.resultNumber.current, 0, this.props.resultNumber, calcDigits(this.props.resultNumber), 1.5, options);
+        let counter = new CounutUp(this.resultNumber.current, 0, this.props.resultNumber, calcDigits(Number(this.props.resultNumber)), 1.5, options);
         if (!counter.error) {
             counter.start();
         } else {
@@ -43,10 +45,3 @@ export class CommonStatsCard extends React.Component {
         }
     }
 }
-
-CommonStatsCard.propTypes = {
-    cardName: PropTypes.string,
-    resultNumber: PropTypes.number,
-    target: PropTypes.number,
-    isLastCard: PropTypes.bool
-};

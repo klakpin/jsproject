@@ -22,7 +22,6 @@ module.exports = {
     ],
     devtool: 'inline-source-map',
     devServer: {
-        open: 'http://localhost:8989',
         port: 8989,
         contentBase: path.resolve(__dirname, 'dist'),
         hot: true,
@@ -53,7 +52,8 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['es2016', 'react']
+                        presets: ['es2016', 'react'],
+                        plugins: ['@babel/plugin-proposal-class-properties']
                     }
                 }
             }

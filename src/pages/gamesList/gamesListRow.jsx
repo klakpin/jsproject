@@ -10,23 +10,27 @@ export class GamesListRow extends React.Component {
         return (
             <TableRow>
                 <TableCell>
-                    {this.props.result}</TableCell>
+                    {this.props.result ? "Победа" : "Поражение"}
+                </TableCell>
                 <TableCell>{this.props.date}</TableCell>
                 <TableCell>
-                    <img src={this.props.heroImg} className="heroImage"/>
+                    <img src={`https://api.opendota.com/apps/dota2/images/heroes/${this.props.heroImg}_sb.png`}
+                         className="heroImage"/>
                     {this.props.heroName}
                 </TableCell>
                 <TableCell>{this.props.type}</TableCell>
                 <TableCell>{this.props.duration}</TableCell>
                 <TableCell>{this.props.kda}</TableCell>
-                <TableCell><Link to={"game/23"}>Подробнее</Link></TableCell>
+                <TableCell><Link to={`/game/${this.props.id}`}>Подробнее</Link></TableCell>
             </TableRow>
         );
     }
 }
 
+
 GamesListRow.propTypes = {
-    result: PropTypes.string,
+    id: PropTypes.number,
+    result: PropTypes.bool,
     date: PropTypes.string,
     heroImg: PropTypes.any,
     heroName: PropTypes.string,
@@ -34,3 +38,4 @@ GamesListRow.propTypes = {
     duration: PropTypes.string,
     kda: PropTypes.string
 };
+
