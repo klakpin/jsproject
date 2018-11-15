@@ -1,6 +1,7 @@
 import * as actionsTypes from '../actionTypes'
 import {combineReducers} from 'redux';
 import _ from 'lodash';
+import {setLoadingStatus} from "./loadingStatus";
 
 const defaultState = [];
 
@@ -33,4 +34,5 @@ const reducer = function reducer(state = defaultState, {type, payload}) {
 
 export const ratingReducer = combineReducers({
     history: reducer,
+    loadingStatus: setLoadingStatus
 });

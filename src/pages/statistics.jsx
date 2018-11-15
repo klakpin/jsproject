@@ -3,29 +3,25 @@ import Card from "@material-ui/core/Card/Card";
 import {connect} from "react-redux";
 import {loadRatingHistory} from "../data/actions/rating";
 import Chart from 'chart.js';
+import {STATUSES} from "../data/reducers/loadingStatus";
+import ReactLoading from 'react-loading';
+
+import _ from 'lodash';
 
 class Component extends React.Component {
 
     render() {
-        // let visible;
-        //
-        // switch (this.props.loadingStatus.status) {
-        //     case STATES.READY:
-        //     case STATES.LOADING:
-        //     case STATES.ERROR:
-        //         visible = false;
-        //         break;
-        //     case STATES.COMPLETED:
-        //         visible = true;
-        //         break;
-        // }
+        let visible = false;
+        if (this.props.loadingStatus != null) {
+            visible = (this.props.loadingStatus.status.toString() === STATUSES.completed);
+        }
+
 
         return (
             <div className="gameInfo">
                 <Card className="mmrTableCard" height="350px" width="700px">
-                    <canvas id="myChart" className={"mmrTableCanvas"}/>
-                    {/*{visible && <canvas id="myChart" className={"mmrTableCanvas"} />}*/}
-                    {/*{!visible && <ReactLoading type={"spin"} color={"#0d0eff"}/>}*/}
+                    {visible && <canvas id="myChart" className={"mmrTableCanvas"}/>}
+                    {!visible && <ReactLoading type={"spin"} color={"#0d0eff"}/>}
 
                 </Card>
 
@@ -38,25 +34,25 @@ class Component extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapShot) {
-        if (this.props.ratings !== []) {
+        if (this.props.ratings != null && this.props.ratings !== []) {
             this.drawChart();
         }
     }
 
     drawChart() {
 
-        let dates = [], mmr = [];
 
-        this.props.ratings.forEach((e) => {
-            dates.push(e.time);
-            mmr.push(e.rank);
-        });
+        const history = Array.from(this.props.ratings);
+        const mmr = _.map(history, x => x.rank);
+        const dates = _.map(history, x => x.time);
 
         if (mmr.length === 0) {
             return;
         }
         const ctx = document.getElementById("myChart");
-
+        if (ctx === undefined) {
+            return
+        }
         new Chart(ctx, {
             type: 'line',
             data: {

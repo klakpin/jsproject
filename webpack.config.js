@@ -18,6 +18,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: "Dota 2 assistant",
             template: "./src/index.html"
+        }),
+        new webpack.DefinePlugin({
+            BACKEND_URL: `"${process.env.BACKEND_URL}"`
         })
     ],
     devtool: 'inline-source-map',
@@ -50,11 +53,7 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules)/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['es2016', 'react'],
-                        plugins: ['@babel/plugin-proposal-class-properties']
-                    }
+                    loader: 'babel-loader'
                 }
             }
         ],
