@@ -21,7 +21,7 @@ const store = mockStore(initialState);
 
 describe('App component testing', () => {
 
-    it('test that component renders header, footer and content', () => {
+    it('component renders header, footer and content', () => {
         const component = TestRenderer.create(
             <Provider store={store}>
                 <App/>

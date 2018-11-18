@@ -1,4 +1,5 @@
 import {SET_STEAM32_ID} from "../actionTypes";
+import _ from 'lodash';
 
 const defaultState = {
     value: "107519813"

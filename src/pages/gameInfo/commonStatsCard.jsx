@@ -1,5 +1,4 @@
 import React from "react";
-import * as PropTypes from "prop-types";
 import CounutUp from "countup.js";
 import calcDigits from "@klakpin/digits-calc";
 import Card from "@material-ui/core/Card/Card";
