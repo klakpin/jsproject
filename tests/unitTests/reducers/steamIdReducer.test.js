@@ -8,4 +8,3 @@ test("", () => {
     }
 );
 
-console.log("All test passes");

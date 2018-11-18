@@ -4,8 +4,8 @@ import {App} from "../../src/pages/app";
 import {Provider} from "react-redux";
 import configureStore from 'redux-mock-store'
 
-const middlewares = []
-const mockStore = configureStore(middlewares)
+const middlewares = [];
+const mockStore = configureStore(middlewares);
 const initialState = {
     ratingHistory: {
         history: [],
@@ -21,13 +21,18 @@ const store = mockStore(initialState);
 
 describe('App component testing', () => {
 
-    it('test that component renders', () => {
+    it('test that component renders header, footer and content', () => {
         const component = TestRenderer.create(
             <Provider store={store}>
                 <App/>
             </Provider>
         );
 
-        expect(component.toJSON()).toMatchSnapshot();
+        const testInstance = component.root;
+
+        expect(testInstance.findAllByType('header').length).toBe(1);
+        expect(testInstance.findAllByType('footer').length).toBe(1);
+        expect(testInstance.findAllByProps({"className": "content"}).length).toBe(1);
+
     });
 });
