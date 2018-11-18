@@ -20,7 +20,6 @@
 
 .content {
     padding: 1em;
-    display: flex;
     flex-flow: row;
     flex: 1;
 }
@@ -69,7 +68,8 @@
 
 .gamesTable {
     width: 100%;
-    max-width: 800px;
+    height: auto;
+    max-width: 1000px;
     margin: 0 auto;
     text-align: center;
 
@@ -99,6 +99,8 @@
 .result-win {
     font-weight: bold;
     color: green;
+    text-align: left;
+    vertical-align: middle;
 }
 
 .result-lose {
@@ -137,10 +139,8 @@
 
 .heroInfoCard {
     margin-top: 5px;
-    padding-right: 10px;
     width: 100%;
     padding-top: 10px;
-    padding-left: 10px;
     display: flex;
     flex-flow: row;
 }
@@ -186,4 +186,20 @@
 
 .settings-card {
     width: 100%;
+}
+
+.steam-id-selection {
+    display: flex;
+    flex-flow: row;
+    align-content: center;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.stats-card {
+    width: 100%;
+}
+
+.itemTiming-itemImg {
+    height: 30px;
 }
