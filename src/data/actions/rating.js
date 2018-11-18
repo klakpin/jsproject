@@ -4,7 +4,7 @@ import {setStatusError, setStatusLoaded, setStatusLoadingStarted} from "./loadin
 
 
 export const loadRatingHistory = (dispatch, steamId) => {
-    console.log("getting " + `${BACKEND_URL}/api/players/${steamId}/ratings`);
+
     dispatch(setStatusLoadingStarted());
     axios
         .get(`${BACKEND_URL}/api/players/${steamId}/ratings`)
@@ -14,7 +14,7 @@ export const loadRatingHistory = (dispatch, steamId) => {
         })
         .catch((e) => {
             dispatch(setStatusError(e));
-            console.log(e);
+            console.log("Error while loading rating" + e + ", trying to get " + `${BACKEND_URL}/api/players/${steamId}/ratings`);
         });
 };
 

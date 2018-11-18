@@ -1,4 +1,4 @@
-import {setSteamId} from "../../../data/reducers/steamId";
+import {setSteamId} from "../../../src/data/reducers/steamId";
 
 test("", () => {
         const data = {type: "init", value: undefined};

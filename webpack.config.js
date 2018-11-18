@@ -6,7 +6,7 @@ const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.jsx',
+    entry: ['./src/index.jsx'],
     output: {
         filename: 'main.js',
         publicPath: "/",
@@ -14,7 +14,6 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
-        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: "Dota 2 assistant",
             template: "./src/index.html"

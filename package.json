@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "start:dev": "webpack-dev-server",
-    "start:dev-mock": "set BACKEND_URL=http://localhost:8090&& webpack-dev-server",
+    "start:dev": "set BACKEND_URL=https://api.opendota.com&& webpack-dev-server",
+    "start:dev-mock": "set BACKEND_URL=http://localhost:8090&& node ./start-dev.js",
     "build": "webpack --config webpack.config.js"
   },
   "repository": {
@@ -41,20 +41,17 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "jest-enzyme": "^6.1.2",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "enzyme-to-json": "^3.3.4",
     "@babel/core": "^7.1.5",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.5",
     "@babel/preset-react": "^7.0.0",
-    "axios-mock-adapter": "^1.15.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-dynamic-import-node": "^2.2.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2016": "^7.0.0-beta.3",
@@ -63,28 +60,33 @@
     "css-loader": "^1.0.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme-to-json": "^3.3.4",
     "file-loader": "^2.0.0",
+    "fs-extra": "^7.0.1",
     "html-webpack-plugin": "^3.2.0",
-    "redux-mock-store": "^1.5.3",
     "jest": "^23.6.0",
+    "jest-enzyme": "^6.1.2",
     "prop-types": "latest",
     "react-test-renderer": "^16.6.3",
     "redux-devtools-extension": "^2.13.5",
+    "redux-mock-store": "^1.5.3",
     "regenerator-runtime": "^0.12.1",
-    "reinstall": "^2.0.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.23.1",
-    "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.4.0",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.10",
+    "webpack-hot-client": "latest"
   },
   "jest": {
+    "globals": {
+      "BACKEND_URL": "https://api.opendota.com"
+    },
     "roots": [
-      "<rootDir>/src"
+      "<rootDir>/tests"
     ],
     "collectCoverageFrom": [
-      "**/src/**/*.{js,jsx}"
+      "<rootDir>/src/**/*.{js,jsx}"
     ],
     "testEnvironment": "enzyme",
     "snapshotSerializers": [

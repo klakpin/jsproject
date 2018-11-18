@@ -1,10 +1,10 @@
 const axios = require('axios');
 const express = require("express");
 const app = express();
-const fs = require("fs");
+const fs = require("fs-extra");
 const path = require('path');
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
@@ -12,7 +12,12 @@ app.use(function(req, res, next) {
 
 
 app.get('/api/players/:steamId/ratings', (req, res) => {
-    const steamId = req.params.steamId || 0;
+    const steamId = req.params.steamId;
+
+    if (steamId == null) {
+        res.send("");
+        return;
+    }
 
     try {
         let mock = require(`./responses/ratings/${steamId}`);
@@ -31,3 +36,5 @@ app.get('/api/players/:steamId/ratings', (req, res) => {
 });
 
 app.listen(8090, () => console.log("Listening on port 8090!"));
+
+module.exports = app;

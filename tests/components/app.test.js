@@ -1,6 +1,6 @@
 import TestRenderer from 'react-test-renderer';
 import React from "react";
-import {App} from "../../pages/app";
+import {App} from "../../src/pages/app";
 import {Provider} from "react-redux";
 import configureStore from 'redux-mock-store'
 

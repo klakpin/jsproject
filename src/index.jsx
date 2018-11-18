@@ -4,10 +4,6 @@ import {Provider} from 'react-redux'
 import {App} from './pages/App'
 import {store} from "./data/store";
 
-import axios from 'axios';
-import {connectAxiosWithMockAdapter} from './tests/axiosMocking';
-
-// connectAxiosWithMockAdapter(axios);
 
 
 render(
