@@ -29,7 +29,7 @@ app.get('/api/players/:steamId/ratings', (req, res) => {
             .get(realUrl)
             .then((data) => {
                 console.log('Trying to save ', path.resolve(`./stub/responses/ratings/${steamId}.json`));
-                fs.writeFileSync(path.resolve(`./stub/responses/ratings/${steamId}.json`), JSON.stringify(data.data));
+                fs.outputFileSync(path.resolve(`./stub/responses/ratings/${steamId}.json`), JSON.stringify(data.data));
                 res.send(data.data);
             })
     }
