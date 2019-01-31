@@ -6,7 +6,7 @@ const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.jsx',
+    entry: ['./src/index.jsx'],
     output: {
         filename: 'main.js',
         publicPath: "/",
@@ -14,15 +14,16 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
-        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: "Dota 2 assistant",
             template: "./src/index.html"
+        }),
+        new webpack.DefinePlugin({
+            BACKEND_URL: `"${process.env.BACKEND_URL}"`
         })
     ],
     devtool: 'inline-source-map',
     devServer: {
-        open: 'http://localhost:8989',
         port: 8989,
         contentBase: path.resolve(__dirname, 'dist'),
         hot: true,
@@ -51,10 +52,7 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules)/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['es2016', 'react']
-                    }
+                    loader: 'babel-loader'
                 }
             }
         ],

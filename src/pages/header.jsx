@@ -6,9 +6,9 @@ export const Header = () => (
     <AppBar position={"static"}>
         <div className="mdl-layout__header-row">
             <nav className="mdl-navigation">
-                <Link className="mdl-navigation__link" to="/stats">Общая статистика</Link>
-                <Link className="mdl-navigation__link" to="/gamesList">Мои игры</Link>
-                <Link className="mdl-navigation__link" to="/settings">Настройки</Link>
+                <Link to="/stats" className="mdl-navigation__link">Общая статистика</Link>
+                <Link to="/gamesList" className="mdl-navigation__link">Мои игры</Link>
+                <Link to="/settings" className="mdl-navigation__link">Настройки</Link>
             </nav>
             <div className="mdl-layout-spacer"/>
             <span className="mdl-layout-title">Dota 2 assistant</span>

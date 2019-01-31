@@ -164,11 +164,7 @@
     width: 20%;
 }
 
-.mmrTableCard {
-    width: auto;
-    height: 400px;
-    padding: 1em;
-}
+
 
 .stats {
     width: 100%;
@@ -202,4 +198,30 @@
 
 .itemTiming-itemImg {
     height: 30px;
+}
+
+.mmrTableCanvas {
+    height: 350px;
+    width: 700px;
+}
+
+
+.mmrTableCard {
+    padding: 5px;
+    height: 350px;
+    width: 710px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.settingsForm {
+    display: flex;
+    padding: 1em;
+    justify-content: space-around;
+}
+
+.steamIdInput {
+width: 70%;
 }

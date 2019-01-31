@@ -1,26 +1,58 @@
 import React from "react"
-import Chart from "chart.js"
-import "../style.css"
 import Card from "@material-ui/core/Card/Card";
+import {connect} from "react-redux";
+import {loadRatingHistory} from "../data/actions/rating";
+import Chart from 'chart.js';
+import {STATUSES} from "../data/reducers/loadingStatus";
+import ReactLoading from 'react-loading';
 
-export class Statistics extends React.Component {
+import _ from 'lodash';
+
+class Component extends React.Component {
+
     render() {
+        let visible = false;
+        if (this.props.loadingStatus != null) {
+            visible = (this.props.loadingStatus.status.toString() === STATUSES.completed);
+        }
+
+
         return (
-        <div className="gameInfo">
-            <Card className="mmrTableCard">
-                <canvas id="myChart" height="350px" width="700px"/>
-            </Card>
-        </div>
+            <div className="gameInfo">
+                <Card className="mmrTableCard" height="350px" width="700px">
+                    {visible && <canvas id="myChart" className={"mmrTableCanvas"}/>}
+                    {!visible && <ReactLoading type={"spin"} color={"#0d0eff"}/>}
+
+                </Card>
+
+            </div>
         );
     }
 
     componentDidMount() {
-        const dates = ["01.01.2016", "10.01.2016", "20.01.2016", "02.02.2016", "01.03.2016",
-            "10.04.2016", "15.04.2016", "10.05.2016", "15.06.2016"];
-        const mmr = [3456, 3545, 3784, 3417, 3987, 3489, 3145, 3789, 3489];
+        this.props.loadRating(this.props.steamId);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapShot) {
+        if (this.props.ratings != null && this.props.ratings !== []) {
+            this.drawChart();
+        }
+    }
+
+    drawChart() {
 
 
+        const history = Array.from(this.props.ratings);
+        const mmr = _.map(history, x => x.rank);
+        const dates = _.map(history, x => x.time);
+
+        if (mmr.length === 0) {
+            return;
+        }
         const ctx = document.getElementById("myChart");
+        if (ctx === undefined) {
+            return
+        }
         new Chart(ctx, {
             type: 'line',
             data: {
@@ -33,7 +65,27 @@ export class Statistics extends React.Component {
                         fill: false
                     }
                 ]
+            },
+            options: {
+                scales:
+                    {
+                        xAxes: [{
+                            display: false
+                        }]
+                    }
             }
         });
     }
 }
+
+const mapStateToProps = (state) => ({
+    ratings: state.ratingHistory.history,
+    loadingStatus: state.ratingHistory.loadingStatus,
+    steamId: state.steamId.value
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    loadRating: (steamId) => loadRatingHistory(dispatch, steamId)
+});
+
+export const Statistics = connect(mapStateToProps, mapDispatchToProps)(Component);
