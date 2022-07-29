@@ -10,7 +10,7 @@ export class ItemTimings extends React.Component {
         return (
             <Paper className="heroInfoCard">
                 <TimingWithItem itemSrc="" actualTiming={"Твой тайминг"} idealTiming={"Идеальный тайминг"}/>
-                <TimingWithItem itemSrc={itemImg} actualTiming={"23:23"} idealTiming={"20:59"}/>
+                <TimingWithItem itemSrc={itemImg} actual    Timing={"23:23"} idealTiming={"20:59"}/>
                 <TimingWithItem itemSrc={itemImg} actualTiming={"23:23"} idealTiming={"20:59"}/>
                 <TimingWithItem itemSrc={itemImg} actualTiming={"23:23"} idealTiming={"20:59"}/>
                 <TimingWithItem itemSrc={itemImg} actualTiming={"23:23"} idealTiming={"20:59"}/>
